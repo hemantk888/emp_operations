@@ -14,15 +14,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 # from cgitb import handler
-from django.conf import settings
 from django.contrib import admin
 # from rest_framework_simplejwt.views import TokenVerifyView, TokenObtainPairView, TokenRefreshView
 from website.views import loginUser, profile, welcome, greet, home, signup
 from django.urls import path, include
 # from rest_framework_simplejwt import views as jwt_views
 from website import views
-from django.views.static import serve
-from django.conf.urls import url
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -33,9 +30,6 @@ urlpatterns = [
     path('home.html', home),
     path('meetings/', include('meeting.urls')),
     path('profile/', profile, name='profile'),
-    
-    url(r'^media/(?P<path>.*)$', serve,{'document_root': settings.MEDIA_ROOT}), 
-    url(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}),
     # path('api/token/verify/', TokenVerifyView.as_view(), name='token_verify'),
 
     # path('api/token/',
